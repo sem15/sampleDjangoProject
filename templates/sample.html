@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sample</title>
+</head>
+
+
+<h1>
+    <font size="+10"> Items in the Database:</font>
+</h1>
+
+
+<ul>
+    <font size="+2">
+    {% for item in all_items %}
+        <li>{{ item.content }}
+            <form action="/deleteItem/{{item.id}}/"
+                  style="display: inLine;"
+                  method = "post">{% csrf_token %}
+                <input type="submit" value="Delete" />
+            </form>
+        </li>
+    {% endfor %}
+    </font>
+</ul>
+
+
+<form action="addItem" method = "post">{% csrf_token %}
+    <input type="text" name="content"/>
+    <input type="submit" value="Add Item to the Database" />
+</form>
+
+
+<style>
+         .button {
+         background-color: #1c87c9;
+         border: none;
+         color: white;
+         padding: 20px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+         }
+      </style>
+   <body>
+      <a href="http://127.0.0.1:8000" class="button">Home Page</a>
+   </body>
+
+
+
